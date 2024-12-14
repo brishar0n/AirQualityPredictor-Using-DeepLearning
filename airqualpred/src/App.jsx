@@ -46,9 +46,8 @@ function App() {
                     </p>
                 </div>
 
-                {/* Right Section: Form */}
                 <div className="container">
-                    <h1>Air Quality Prediction</h1>
+                    <h1>Air Quality Predictor 🌏</h1>
                     <form className="form" onSubmit={handleSubmit}>
                         <input
                             name="year"
