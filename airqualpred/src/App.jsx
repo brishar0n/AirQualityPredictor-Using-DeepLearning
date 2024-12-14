@@ -32,6 +32,16 @@ function App() {
         }
     };
 
+    const handleReset = () => {
+        setFormData({
+            year: "",
+            month: "",
+            day: "",
+        });
+        setResult(null);
+        setError(null);
+    };
+
     return (
         <div className="App">
             <div className="layout">
@@ -57,6 +67,7 @@ function App() {
                             onChange={handleChange}
                             required
                             className="input"
+                            min="2025"
                         />
                         <input
                             name="month"
@@ -84,11 +95,28 @@ function App() {
                     {error && <p className="error-message">{error}</p>}
 
                     {result && !loading && (
-                        <div className="result">
-                            <h2>Prediction Result</h2>
-                            <p>Average Prediction: {result.average_prediction ? result.average_prediction.toFixed(2) : "N/A"}</p>
-                            <p>Air Quality: {result.air_quality}</p>
-                        </div>
+                        <>
+                            <div className="result">
+                                <h2>Prediction Result</h2>
+                                <p>Average Prediction: {result.average_prediction ? result.average_prediction.toFixed(2) : "N/A"}</p>
+                                <p>Air Quality: {result.air_quality}</p>
+                            </div>
+
+                            <div className="detailed-result">
+                                <h3>Detailed Prediction</h3>
+                                <p>Air Quality State: {result.air_quality_state}</p>
+                                <p>PM2.5 Level: {result.pm25_level}</p>
+                                <p>PM10 Level: {result.pm10_level}</p>
+                                <p>SO2 Level: {result.so2_level}</p>
+                                <p>CO Level: {result.co_level}</p>
+                                <p>O3 Level: {result.o3_level}</p>
+                                <p>NO2 Level: {result.no2_level}</p>
+                            </div>
+
+                            <button onClick={handleReset} className="reset-button">
+                                Reset
+                            </button>
+                        </>
                     )}
                 </div>
             </div>
