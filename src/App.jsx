@@ -38,7 +38,7 @@ function App() {
         };
 
         try {
-            const response = await axios.post("https://air-quality-predictor-backend.vercel.app/get_prediction", requestData, {
+            const response = await axios.post("air-quality-predictor-backend-git-main-brishar0ns-projects.vercel.app/get_prediction", requestData, {
                 headers: {
                     "Content-Type": "application/json",
                 },
