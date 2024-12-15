@@ -19,10 +19,12 @@ app.add_middleware(
     allow_headers=["*"],  
 )
 
+# connecting to the user inputs as base model
 class PredictionRequest(BaseModel):
     model: str
     date: str
 
+# user input's model is translated to search the respective json file in backend data
 def get_predictions_for_model(model_name: str, date: str) -> dict:
     file_path = f"output/{model_name}.json"
     
