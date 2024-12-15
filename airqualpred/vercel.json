@@ -1,9 +1,12 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "api/main.py",
-        "use": "@vercel/python"
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/node",
+      "config": {
+        "buildCommand": "npm run build"
       }
-    ]
-  }  
+    }
+  ]
+}
