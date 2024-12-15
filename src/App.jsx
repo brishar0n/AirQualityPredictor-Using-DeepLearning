@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import "./App.css";
 
 function App() {
@@ -44,6 +46,14 @@ function App() {
 
     return (
         <div className="App">
+            <a
+                href="https://github.com/brishar0n/AirQualityPredictor-using-DeepLearning"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="github-icon"
+            >
+                <FontAwesomeIcon icon={faGithub} size="2x" />
+            </a>
             <div className="layout">
                 <div className="description">
                     <h2>About This Project</h2>
