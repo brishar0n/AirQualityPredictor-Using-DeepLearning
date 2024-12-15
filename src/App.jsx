@@ -42,7 +42,7 @@ function App() {
 
         try {
             // Sending the JSON body to the FastAPI backend
-            const response = await axios.post("http://127.0.0.1:8000/get_prediction", requestData, {
+            const response = await axios.post("air-quality-predictor-backend.vercel.app/get_prediction", requestData, {
                 headers: {
                     "Content-Type": "application/json",
                 },
