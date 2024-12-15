@@ -9,7 +9,7 @@ app = FastAPI()
 origins = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    # "https://air-quality-predictor-using-deep-learning.vercel.app",
+    "https://air-quality-predictor-using-deep-learning.vercel.app"
 ]
 
 app.add_middleware(
