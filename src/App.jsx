@@ -7,7 +7,7 @@ function App() {
         year: "",
         month: "",
         day: "",
-        model: "", // added model selection
+        model: "",
     });
 
     const [result, setResult] = useState(null);
@@ -24,34 +24,28 @@ function App() {
         setLoading(true);
         setError(null);
 
-        // Format date to "yyyy-mm-dd"
         const formattedDate = `${formData.year}-${formData.month.padStart(2, "0")}-${formData.day.padStart(2, "0")}`;
 
-        // Ensure the model is selected
         if (!formData.model) {
             setError("Please select a model.");
             setLoading(false);
             return;
         }
 
-        // Request body in the format { "model": "CNN", "date": "2023-01-01" }
         const requestData = {
             model: formData.model,
             date: formattedDate,
         };
 
         try {
-            // Sending the JSON body to the FastAPI backend
-            const response = await axios.post("air-quality-predictor-backend.vercel.app/get_prediction", requestData, {
+            const response = await axios.post("https://air-quality-predictor-backend.vercel.app/get_prediction", requestData, {
                 headers: {
                     "Content-Type": "application/json",
                 },
             });
 
-            // Handle the response data (set it to state)
             setResult(response.data);
         } catch (error) {
-            // Handle errors (such as network issues)
             setError("Error predicting air quality. Please try again later.");
         } finally {
             setLoading(false);
@@ -63,7 +57,7 @@ function App() {
             year: "",
             month: "",
             day: "",
-            model: "", // Reset model selection
+            model: "",
         });
         setResult(null);
         setError(null);
@@ -119,7 +113,6 @@ function App() {
                             min="1"
                             max="31"
                         />
-                        {/* Dropdown to select the model */}
                         <select
                             name="model"
                             value={formData.model}
@@ -153,7 +146,6 @@ function App() {
                         <>
                             <div className="result">
                                 <h2>Prediction Result</h2>
-                                {/* Displaying Prediction for Each Model */}
                                 {Object.keys(result).map((model) => (
                                     <div key={model}>
                                         <h3>{model}</h3>
