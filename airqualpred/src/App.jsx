@@ -48,11 +48,11 @@ function App() {
                 <div className="description">
                     <h2>About This Project</h2>
                     <p>
-                        Our Urban Air Quality Predictor is a project based on deep learning
-                        (AI) model, GRU, that predicts the quality of the air based on 3 parameters:
-                        year, month, and day. The model was trained using existing pollutant and weather data
-                        from South Tangerang. It's overall average accuracy is 97.745% on training data.
-                        With this project, users are able to predict the AQI and its state based on its pollutant factors.
+                        Our Urban Air Quality Predictor is a project based on a deep learning
+                        (AI) model, GRU, that predicts air quality based on user inputs:
+                        year, month, and day. The model was trained using pollutant and weather data
+                        from South Tangerang. With this tool, users can estimate the AQI state and its
+                        contributing factors.
                     </p>
                 </div>
 
@@ -67,7 +67,7 @@ function App() {
                             onChange={handleChange}
                             required
                             className="input"
-                            min="2025"
+                            min="2024"
                         />
                         <input
                             name="month"
@@ -77,6 +77,8 @@ function App() {
                             onChange={handleChange}
                             required
                             className="input"
+                            min="1"
+                            max="12"
                         />
                         <input
                             name="day"
@@ -86,6 +88,8 @@ function App() {
                             onChange={handleChange}
                             required
                             className="input"
+                            min="1"
+                            max="31"
                         />
                         <button type="submit" className="submit-button">
                             {loading ? "Loading..." : "Predict"}
@@ -98,19 +102,18 @@ function App() {
                         <>
                             <div className="result">
                                 <h2>Prediction Result</h2>
-                                <p>Average Prediction: {result.average_prediction ? result.average_prediction.toFixed(2) : "N/A"}</p>
-                                <p>Air Quality: {result.air_quality}</p>
+                                <p>Target Date: {result.target_date}</p>
+                                <p>Air Quality State: {result.aqi_state}</p>
+                                <p>Dominant Pollutant: {result.dominant_pollutant}</p>
                             </div>
 
                             <div className="detailed-result">
-                                <h3>Detailed Prediction</h3>
-                                <p>Air Quality State: {result.air_quality_state}</p>
-                                <p>PM2.5 Level: {result.pm25_level}</p>
-                                <p>PM10 Level: {result.pm10_level}</p>
-                                <p>SO2 Level: {result.so2_level}</p>
-                                <p>CO Level: {result.co_level}</p>
-                                <p>O3 Level: {result.o3_level}</p>
-                                <p>NO2 Level: {result.no2_level}</p>
+                                <h3>Predicted Pollutant Levels</h3>
+                                {Object.entries(result.predicted_pollutant_levels).map(([pollutant, level]) => (
+                                    <p key={pollutant}>
+                                        {pollutant} Level: {level.toFixed(2)}
+                                    </p>
+                                ))}
                             </div>
 
                             <button onClick={handleReset} className="reset-button">
