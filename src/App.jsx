@@ -38,7 +38,7 @@ function App() {
         };
 
         try {
-            const response = await axios.post("air-quality-predictor-backend-git-main-brishar0ns-projects.vercel.app/get_prediction", requestData, {
+            const response = await axios.post("http://127.0.0.1:8000/get_prediction", requestData, {
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -70,10 +70,11 @@ function App() {
                     <h2>About This Project</h2>
                     <p>
                         Our Urban Air Quality Predictor is a project based on deep learning
-                        (AI) model, GRU, that predicts the quality of the air based on 3 parameters:
-                        year, month, and day. The model was trained using existing pollutant and weather data
-                        from South Tangerang. It's overall average accuracy is 97.745% on training data.
-                        With this project, users are able to predict the AQI and its state based on its pollutant factors.
+                        (AI) models and architectures: CNN, RNN, GRU, LSTM, ResNet, ReXNet, and Attention mechanism. This program 
+                        predicts the quality of the air based on 3 parameters:
+                        year, month, and day. The models were trained using existing pollutant and weather data
+                        from South Tangerang. Its overall average accuracy is 97.745% on training data.
+                        With this project, users are able to predict the AQI and assume its overall state based on its pollutant factors.
                     </p>
                 </div>
 
@@ -144,8 +145,8 @@ function App() {
 
                     {result && !loading && (
                         <>
-                            <div className="result">
-                                <h2>Prediction Result</h2>
+                            <div className="result-container">
+                                <h2 className="result-title">Prediction Result</h2>
                                 {Object.keys(result).map((model) => (
                                     <div key={model}>
                                         <h3>{model}</h3>
@@ -154,7 +155,7 @@ function App() {
                                         ) : (
                                             <>
                                                 <p>Prediction Date: {result[model].date}</p>
-                                                <p>PM2.5: {result[model].prediction.PM25}</p>
+                                                <p>PM2.5: {result[model].prediction['PM2.5']}</p>
                                                 <p>PM10: {result[model].prediction.PM10}</p>
                                                 <p>SO2: {result[model].prediction.SO2}</p>
                                                 <p>CO: {result[model].prediction.CO}</p>
