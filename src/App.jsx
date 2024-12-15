@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
 
-function App() {
+// initializing the form for the user input
+function App() {  
     const [formData, setFormData] = useState({
         year: "",
         month: "",
@@ -24,14 +25,17 @@ function App() {
         setLoading(true);
         setError(null);
 
+        // changing the input year, month, and day to date format
         const formattedDate = `${formData.year}-${formData.month.padStart(2, "0")}-${formData.day.padStart(2, "0")}`;
 
+        // error handling
         if (!formData.model) {
             setError("Please select a model.");
             setLoading(false);
             return;
         }
 
+        // connecting to backend (FastAPI)
         const requestData = {
             model: formData.model,
             date: formattedDate,
@@ -154,6 +158,7 @@ function App() {
                                             <p>{result[model].error}</p>
                                         ) : (
                                             <>
+                                                <!-- for searching the backend data -->
                                                 <p>Prediction Date: {result[model].date}</p>
                                                 <p>PM2.5 (μg/m3): {result[model].prediction['PM2.5']}</p>
                                                 <p>PM10 (μg/m3): {result[model].prediction.PM10}</p>
