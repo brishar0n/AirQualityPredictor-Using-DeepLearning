@@ -123,17 +123,17 @@ function App() {
                         >
                             <option value="">Select Model</option>
                             <option value="CNN">CNN</option>
-                            <option value="CNN_Attention">CNN_Attention</option>
+                            <option value="CNN_Attention">CNN + Attention</option>
                             <option value="RNN">RNN</option>
-                            <option value="RNN_Attention">RNN_Attention</option>
+                            <option value="RNN_Attention">RNN + Attention</option>
                             <option value="GRU">GRU</option>
-                            <option value="GRU_Attention">GRU_Attention</option>
+                            <option value="GRU_Attention">GRU + Attention</option>
                             <option value="LSTM">LSTM</option>
-                            <option value="LSTM_Attention">LSTM_Attention</option>
+                            <option value="LSTM_Attention">LSTM + Attention</option>
                             <option value="ResNet">ResNet</option>
-                            <option value="ResNet_Attention">ResNet_Attention</option>
+                            <option value="ResNet_Attention">ResNet + Attention</option>
                             <option value="ReXNet">ReXNet</option>
-                            <option value="ReXNet_Attention">ReXNet_Attention</option>
+                            <option value="ReXNet_Attention">ReXNet + Attention</option>
                         </select>
 
                         <button type="submit" className="submit-button">
@@ -155,12 +155,12 @@ function App() {
                                         ) : (
                                             <>
                                                 <p>Prediction Date: {result[model].date}</p>
-                                                <p>PM2.5: {result[model].prediction['PM2.5']}</p>
-                                                <p>PM10: {result[model].prediction.PM10}</p>
-                                                <p>SO2: {result[model].prediction.SO2}</p>
-                                                <p>CO: {result[model].prediction.CO}</p>
-                                                <p>O3: {result[model].prediction.O3}</p>
-                                                <p>NO2: {result[model].prediction.NO2}</p>
+                                                <p>PM2.5 (μg/m3): {result[model].prediction['PM2.5']}</p>
+                                                <p>PM10 (μg/m3): {result[model].prediction.PM10}</p>
+                                                <p>SO2 (ppm): {result[model].prediction.SO2}</p>
+                                                <p>CO (ppm): {result[model].prediction.CO}</p>
+                                                <p>O3 (ppb): {result[model].prediction.O3}</p>
+                                                <p>NO2 (ppm): {result[model].prediction.NO2}</p>
                                             </>
                                         )}
                                     </div>
